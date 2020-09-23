@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.5
+* Game of Life v0.6
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -29,11 +29,19 @@ const draw = () => {
         }
         y += SIZE_CELL;
     }
-}
-console.log(cells)
+};
 
+const checkNeighbors = (x, y) => {
+
+};
+
+const nextGeneration = () => {
+
+};
 
 // Game loop
 const timer = setInterval(() => {
     draw();
+    checkNeighbors();
+    nextGeneration();
 }, 1000 / 60);
