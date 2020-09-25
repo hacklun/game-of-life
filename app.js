@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7
+* Game of Life v0.7.1
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -56,6 +56,7 @@ const nextGeneration = () => {
 // Game loop
 const timer = setInterval(() => {
     draw();
-    checkNeighbors();
+    let count = checkNeighbors(5, 5);
+    console.log(count);
     nextGeneration();
 }, 1000 / 60);
