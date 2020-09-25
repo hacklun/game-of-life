@@ -1,7 +1,9 @@
 /*
-* Game of Life v0.6
+* Game of Life v0.7
 * Author: Ivshin Pavel aka hacklun
 */
+
+// Version 0.7 - implementation checkNeighbors function
 
 const canvas = document.querySelector('#board canvas');
 const ctx = canvas.getContext('2d');
@@ -31,8 +33,20 @@ const draw = () => {
     }
 };
 
-const checkNeighbors = (x, y) => {
+// todo add function isAlive
 
+const checkNeighbors = (x, y) => {
+    let countNeighbors = 0;
+    if (this.cells[x - 1][y - 1] === 1) countNeighbors++;
+    if (this.cells[x][y - 1] === 1) countNeighbors++;
+    if (this.cells[x + 1][y - 1] === 1) countNeighbors++;
+    if (this.cells[x - 1][y] === 1) countNeighbors++;
+    if (this.cells[x + 1][y] === 1) countNeighbors++;
+    if (this.cells[x - 1][y + 1] === 1) countNeighbors++;
+    if (this.cells[x][y + 1] === 1) countNeighbors++;
+    if (this.cells[x + 1][y + 1] === 1) countNeighbors++;
+
+    return countNeighbors;
 };
 
 const nextGeneration = () => {
