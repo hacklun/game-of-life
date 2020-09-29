@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7.3
+* Game of Life v0.7.4
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -36,7 +36,7 @@ const draw = () => {
 // todo add function isAlive
 
 const checkNeighbors = (x, y) => {
-    let countNeighbors = 0;2
+    let countNeighbors = 0;
     let xStep = -1;
     let yStep = -1;
     while (xStep < 2) {
@@ -44,16 +44,9 @@ const checkNeighbors = (x, y) => {
             if (cells[x + xStep][y + yStep] === 1) countNeighbors++;
             yStep++;
         }
+        yStep = -1;
         xStep++;
     }
-    /*if (cells[x - 1][y - 1] === 1) countNeighbors++;
-    if (cells[x][y - 1] === 1) countNeighbors++;
-    if (cells[x + 1][y - 1] === 1) countNeighbors++;
-    if (cells[x - 1][y] === 1) countNeighbors++;
-    if (cells[x + 1][y] === 1) countNeighbors++;
-    if (cells[x - 1][y + 1] === 1) countNeighbors++;
-    if (cells[x][y + 1] === 1) countNeighbors++;
-    if (cells[x + 1][y + 1] === 1) countNeighbors++;*/
 
     return countNeighbors;
 };
