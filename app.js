@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7.1
+* Game of Life v0.7.2
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -36,15 +36,23 @@ const draw = () => {
 // todo add function isAlive
 
 const checkNeighbors = (x, y) => {
-    let countNeighbors = 0;
-    if (this.cells[x - 1][y - 1] === 1) countNeighbors++;
-    if (this.cells[x][y - 1] === 1) countNeighbors++;
-    if (this.cells[x + 1][y - 1] === 1) countNeighbors++;
-    if (this.cells[x - 1][y] === 1) countNeighbors++;
-    if (this.cells[x + 1][y] === 1) countNeighbors++;
-    if (this.cells[x - 1][y + 1] === 1) countNeighbors++;
-    if (this.cells[x][y + 1] === 1) countNeighbors++;
-    if (this.cells[x + 1][y + 1] === 1) countNeighbors++;
+    let countNeighbors = 0;2
+    let xStep = -1;
+    let yStep = -1;
+    // I must try to use while loop
+    for (let i = x + xStep; xStep < 2; xStep++) {
+        for (let j = y + yStep; yStep < 2; yStep++) {
+            if (cells[i][j] === 1) countNeighbors++;
+        }
+    }
+    /*if (cells[x - 1][y - 1] === 1) countNeighbors++;
+    if (cells[x][y - 1] === 1) countNeighbors++;
+    if (cells[x + 1][y - 1] === 1) countNeighbors++;
+    if (cells[x - 1][y] === 1) countNeighbors++;
+    if (cells[x + 1][y] === 1) countNeighbors++;
+    if (cells[x - 1][y + 1] === 1) countNeighbors++;
+    if (cells[x][y + 1] === 1) countNeighbors++;
+    if (cells[x + 1][y + 1] === 1) countNeighbors++;*/
 
     return countNeighbors;
 };
@@ -53,10 +61,14 @@ const nextGeneration = () => {
 
 };
 
+draw();
+let count = checkNeighbors(5, 5);
+    console.log(count);
+
 // Game loop
 const timer = setInterval(() => {
     draw();
-    let count = checkNeighbors(5, 5);
-    console.log(count);
+    /*let count = checkNeighbors(5, 5);
+    console.log(count);*/
     nextGeneration();
 }, 1000 / 60);
