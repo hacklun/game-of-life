@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7.4
+* Game of Life v0.7.5
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -33,7 +33,10 @@ const draw = () => {
     }
 };
 
-// todo add function isAlive
+const isAlive = (x, y) => {
+    if (cells[x][y] === 1) return true;
+    return false;
+}
 
 const checkNeighbors = (x, y) => {
     let countNeighbors = 0;
