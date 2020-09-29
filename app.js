@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7.2
+* Game of Life v0.7.3
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -39,11 +39,12 @@ const checkNeighbors = (x, y) => {
     let countNeighbors = 0;2
     let xStep = -1;
     let yStep = -1;
-    // I must try to use while loop
-    for (let i = x + xStep; xStep < 2; xStep++) {
-        for (let j = y + yStep; yStep < 2; yStep++) {
-            if (cells[i][j] === 1) countNeighbors++;
+    while (xStep < 2) {
+        while (yStep < 2) {
+            if (cells[x + xStep][y + yStep] === 1) countNeighbors++;
+            yStep++;
         }
+        xStep++;
     }
     /*if (cells[x - 1][y - 1] === 1) countNeighbors++;
     if (cells[x][y - 1] === 1) countNeighbors++;
