@@ -40,15 +40,17 @@ const isAlive = (x, y) => {
 
 const checkNeighbors = (x, y) => {
     let countNeighbors = 0;
-    let xStep = -1;
-    let yStep = -1;
+    let xStep = -2;
+    let yStep = -2;
     while (xStep < 2) {
-        while (yStep < 2) {
-            if (cells[x + xStep][y + yStep] === 1) countNeighbors++;
-            yStep++;
-        }
-        yStep = -1;
         xStep++;
+        if (x + xStep < 0 || x + xStep > 9) continue;
+        while (yStep < 2) {
+            yStep++;
+            if (y + yStep < 0 || y + yStep > 9) continue;
+            if (cells[x + xStep][y + yStep] === 1) countNeighbors++;
+        }
+        yStep = -2;
     }
 
     return countNeighbors;
@@ -59,7 +61,7 @@ const nextGeneration = () => {
 };
 
 draw();
-let count = checkNeighbors(5, 5);
+let count = checkNeighbors(0, 0);
     console.log(count);
 
 // Game loop
