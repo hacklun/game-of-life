@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7.5
+* Game of Life v0.7.6
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -31,7 +31,7 @@ const SIZE_CELL = 30;
 for (let i = 0; i < 10; i++) {
     let row = [];
     for (let j = 0; j < 10; j++) {
-        row.push(Math.round(Math.random()))
+        row.push(Math.round(Math.random()));
     }
     cells.push(row);
 }
@@ -40,7 +40,7 @@ ctx.strokeStyle = "gray";
 const draw = () => {
     let y = 0;
     for (let i = 0; i < 10; i++) {
-        for (j = 0; j < 10; j++) {
+        for (let j = 0; j < 10; j++) {
             if (cells[i][j] === 1) {
                 ctx.fillRect(j * SIZE_CELL, y, SIZE_CELL, SIZE_CELL);
             }
@@ -59,17 +59,18 @@ const checkNeighbors = (x, y) => {
     let countNeighbors = 0;
     let xStep = -2;
     let yStep = -2;
-    while (xStep < 2) {
+    while (xStep < 1) {
         xStep++;
+        //debugger;
         if (x + xStep < 0 || x + xStep > 9) continue;
-        while (yStep < 2) {
+        while (yStep < 1) {
             yStep++;
             if (y + yStep < 0 || y + yStep > 9) continue;
             if (cells[x + xStep][y + yStep] === 1) countNeighbors++;
         }
         yStep = -2;
     }
-
+    if (isAlive(x, y)) countNeighbors--;
     return countNeighbors;
 };
 
@@ -78,7 +79,7 @@ const nextGeneration = () => {
 };
 
 draw();
-let count = checkNeighbors(0, 0);
+let count = checkNeighbors(5, 5);
     console.log(count);
 
 // Game loop
