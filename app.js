@@ -1,5 +1,5 @@
 /*
-* Game of Life v0.7.6
+* Game of Life v0.8
 * Author: Ivshin Pavel aka hacklun
 */
 
@@ -20,7 +20,7 @@
 Игрок не принимает прямого участия в игре, а лишь расставляет или генерирует начальную конфигурацию «живых» клеток, которые затем взаимодействуют согласно правилам уже без его участия (он является наблюдателем).
  */
 
-// Version 0.7 - implementation checkNeighbors function
+// Version 0.8 - implementation nextGeneration function
 
 const canvas = document.querySelector('#board canvas');
 const ctx = canvas.getContext('2d');
@@ -61,7 +61,6 @@ const checkNeighbors = (x, y) => {
     let yStep = -2;
     while (xStep < 1) {
         xStep++;
-        //debugger;
         if (x + xStep < 0 || x + xStep > 9) continue;
         while (yStep < 1) {
             yStep++;
@@ -85,7 +84,5 @@ let count = checkNeighbors(5, 5);
 // Game loop
 const timer = setInterval(() => {
     draw();
-    /*let count = checkNeighbors(5, 5);
-    console.log(count);*/
     nextGeneration();
 }, 1000 / 60);
